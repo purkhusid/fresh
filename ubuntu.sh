@@ -37,4 +37,9 @@ sudo apt install -y steam
 #Intellij
 sudo snap install intellij-idea-community --classic --edge
 sudo snap install rider --classic --edge
+
+#Spotify
 sudo snap install spotify
+
+#Slack
+sudo snap install slack --classic
