@@ -19,6 +19,7 @@ unzip \
 python \
 openjdk-8-jdk \
 fonts-firacode \
+shellcheck \
 software-properties-common 
 
 #Drivers
