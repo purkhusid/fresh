@@ -11,6 +11,12 @@ apt-transport-https \
 ca-certificates \
 curl \
 wget \
+pkg-config \
+zip \
+g++ \
+zlib1g-dev \
+unzip \
+python \
 software-properties-common 
 
 #Drivers
