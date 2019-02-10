@@ -17,6 +17,7 @@ g++ \
 zlib1g-dev \
 unzip \
 python \
+openjdk-8-jdk \
 software-properties-common 
 
 #Drivers
