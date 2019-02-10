@@ -18,6 +18,7 @@ zlib1g-dev \
 unzip \
 python \
 openjdk-8-jdk \
+fonts-firacode \
 software-properties-common 
 
 #Drivers
