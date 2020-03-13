@@ -6,6 +6,7 @@ set -o errexit
 sudo apt update -y
 sudo apt install -y \
 git \
+stow \
 vim \
 apt-transport-https \
 ca-certificates \
@@ -20,10 +21,8 @@ python \
 openjdk-8-jdk \
 fonts-firacode \
 shellcheck \
+mesa-utils \
 software-properties-common 
-
-#Drivers
-sudo ubuntu-drivers autoinstall
 
 #Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -32,23 +31,19 @@ sudo apt update -y
 sudo apt install -y docker-ce
 sudo usermod -aG docker ${USER}
 
-#VS Code
-wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-sudo apt update -y
-sudo apt install -y code
+#Kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+mkdir 
+sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/
+cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
 
-#Steam
-sudo add-apt-repository multiverse
-sudo apt update -y
-sudo apt install -y steam
+#Alacritty
+sudo add-apt-repository ppa:mmstick76/alacritty
+sudo apt install alacritty
 
 #Intellij
 sudo snap install intellij-idea-community --classic --edge
 sudo snap install rider --classic --edge
 
-#Spotify
-sudo snap install spotify
-
-#Slack
-sudo snap install slack --classic
+#VS Code
+sudo snap install vscode --classic
