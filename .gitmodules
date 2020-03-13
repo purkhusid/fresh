@@ -1,0 +1,6 @@
+[submodule "dotfiles/.zsh_custom/themes/powerlevel10k"]
+	path = dotfiles/.zsh_custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "dotfiles/.zsh_custom/plugins/zsh-autosuggestions"]
+	path = dotfiles/.zsh_custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
