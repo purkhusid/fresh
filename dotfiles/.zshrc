@@ -20,6 +20,11 @@ SAVEHIST="200000"
 HISTFILE="$HOME/.zsh_history"
 mkdir -p "$(dirname "$HISTFILE")"
 
+#Go tooling
+export GOBIN="$HOME/go/gobin"
+export GOPATH="$HOME/go"
+export PATH="$GOBIN:$GOPATH:$PATH"
+
 #Extra envs
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
@@ -59,6 +64,16 @@ source $ZSH/oh-my-zsh.sh
 vf() {
   local files
   IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+
+# vfg [FUZZY PATTERN] - Open the selected git file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+vfg() {
+  local files
+  IFS=$'\n' files=($(git ls-files | fzf --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 

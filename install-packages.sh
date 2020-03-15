@@ -38,7 +38,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
 echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
 sudo apt update
-sudo apt install bazel
+sudo apt install -y bazel
 
 #Docker
 sudo snap install docker
@@ -55,6 +55,11 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 sudo ln -sf ~/.local/kitty.app/bin/kitty /usr/local/bin/
 cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
 sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hicolor\/256x256\/apps\/kitty.png/g" ~/.local/share/applications/kitty.desktop
+
+#Golang
+sudo add-apt-repository ppa:longsleep/golang-backports
+sudo apt update
+sudo apt install -y golang-go
 
 #Intellij
 sudo snap install intellij-idea-community --classic --edge
