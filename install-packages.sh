@@ -19,17 +19,26 @@ zlib1g-dev \
 unzip \
 python \
 openjdk-8-jdk \
+openjdk-11-jdk \
 fonts-firacode \
 shellcheck \
 mesa-utils \
 fonts-powerline \
 zsh \
 fzf \
+fd-find \
+neovim \
 software-properties-common 
 
 # Oh My Zsh
 rm -rf "$HOME/.oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended --keep-zshrc"
+
+#Bazel
+curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+sudo apt update
+sudo apt install bazel
 
 #Docker
 sudo snap install docker
