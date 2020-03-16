@@ -61,6 +61,11 @@ sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt update
 sudo apt install -y golang-go
 
+#NodeJS
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo npm install -g typescript-language-server
+
 #Intellij
 sudo snap install intellij-idea-community --classic --edge
 sudo snap install rider --classic --edge

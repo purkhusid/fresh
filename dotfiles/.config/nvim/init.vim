@@ -33,6 +33,11 @@ Plug 'iCyMind/NeoSolarized'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+" Typescript/JavaScript
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
+Plug 'HerringtonDarkholme/yats.vim'
+
 call plug#end()
 
 """""""""""
@@ -62,7 +67,11 @@ let g:deoplete#enable_at_startup = 1  " Enable deoplete at startup
 set hidden
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-       \ 'go': ['gopls']
+       \ 'go': ['gopls'],
+       \ 'javascript': ['typescript-language-server', '--stdio'],
+       \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
+       \ 'typescript': ['typescript-language-server', '--stdio'],
+       \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
        \ }
 
 " Run gofmt on save
@@ -84,5 +93,5 @@ endfunction()
 
 augroup LSP
   autocmd!
-  autocmd FileType go call SetLSPShortcuts()
+  autocmd FileType go,typescript,javascript call SetLSPShortcuts()
 augroup END
