@@ -38,6 +38,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
 Plug 'HerringtonDarkholme/yats.vim'
 
+" Bazel
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
+
 call plug#end()
 
 """""""""""
