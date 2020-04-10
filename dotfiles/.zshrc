@@ -25,6 +25,9 @@ export GOBIN="$HOME/go/gobin"
 export GOPATH="$HOME/go"
 export PATH="$GOBIN:$GOPATH:$PATH"
 
+#NodeJS
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 #Extra envs
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"

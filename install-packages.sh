@@ -63,8 +63,10 @@ sudo apt install -y golang-go
 
 #NodeJS
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -o- -L https://yarnpkg.com/install.sh | bash
 sudo apt-get install -y nodejs
 sudo npm install -g typescript-language-server
+sudo npm install -g @bazel/ibazel
 
 #Intellij
 sudo snap install intellij-idea-community --classic --edge

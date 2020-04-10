@@ -1,2 +1,3 @@
 dotfiles/.config/nvim/plugged
 dotfiles/.config/nvim/autoload
+dotfiles/.config/nvim/.netrwhist
