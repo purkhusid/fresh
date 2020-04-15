@@ -25,6 +25,9 @@ export GOBIN="$HOME/go/gobin"
 export GOPATH="$HOME/go"
 export PATH="$GOBIN:$GOPATH:$PATH"
 
+#Rust tooling
+export PATH="$HOME/.cargo/bin:$PATH"
+
 #NodeJS
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
