@@ -20,6 +20,9 @@ SAVEHIST="200000"
 HISTFILE="$HOME/.zsh_history"
 mkdir -p "$(dirname "$HISTFILE")"
 
+#User specific binaries
+export PATH="$HOME/bin:$PATH"
+
 #Go tooling
 export GOBIN="$HOME/go/gobin"
 export GOPATH="$HOME/go"
@@ -30,6 +33,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 #NodeJS
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+#.Net Core
+export PATH="$HOME/.dotnet/tools:$PATH"
 
 #Extra envs
 export LANG="en_US.UTF-8"
@@ -84,5 +90,7 @@ vfg() {
 }
 
 # Aliases
+alias tfswitch='tfswitch -b $HOME/bin/terraform'
+alias code='code-insiders'
 alias k='kubectl'
 alias v='nvim'
