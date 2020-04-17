@@ -76,6 +76,9 @@ chmod +x tfswitch
 mv tfswitch $HOME/bin/tfswitch
 rm tfswitch.tar.gz
 
+#Kubeclt
+sudo packman -U https://archive.archlinux.org/packages/k/kubectl/kubectl-1.14.3-1-x86_64.pkg.tar.xz
+
 #Intellij
 sudo snap install intellij-idea-community --classic --edge
 sudo snap install rider --classic --edge
