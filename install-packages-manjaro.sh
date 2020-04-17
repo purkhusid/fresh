@@ -64,6 +64,7 @@ cargo install sandboxfs
 #Golang configuration and global packages
 go get github.com/bazelbuild/buildtools/buildifier
 go get github.com/bazelbuild/buildtools/buildozer
+go get github.com/bazelbuild/bazelisk
 
 #Global pip packages
 pip3 install pynvim
