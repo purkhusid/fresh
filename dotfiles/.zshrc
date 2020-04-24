@@ -37,6 +37,12 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 #.Net Core
 export PATH="$HOME/.dotnet/tools:$PATH"
 
+# webOS CLI
+export PATH="/usr/local/share/webOS_TV_SDK/CLI/bin:$PATH"
+
+# Opam
+eval $(opam env)
+
 #Extra envs
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
