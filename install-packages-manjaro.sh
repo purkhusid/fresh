@@ -2,7 +2,8 @@
 
 set -o pipefail
 set -o errexit
-
+set -x
+ 
 sudo pacman -Syu --noconfirm \
   git \
   stow \
@@ -11,7 +12,7 @@ sudo pacman -Syu --noconfirm \
   wget \
   python \
   jdk11-openjdk \
-  otf-fira-code \
+  ttf-fira-code \
   shellcheck \
   powerline-fonts \
   zsh \
@@ -34,6 +35,10 @@ sudo pacman -Syu --noconfirm \
   peek \
   opam \
   watchman \
+  patch \
+  gcc \
+  make \
+  m4 \
   chromium
 
 # Create bin folder for user specific binaries
@@ -64,7 +69,6 @@ sudo npm install -g @bazel/ibazel
 #Rust configuration and global packages
 rustup default stable
 rustup update
-cargo install sandboxfs
 
 #Golang configuration and global packages
 go get github.com/bazelbuild/buildtools/buildifier
@@ -87,8 +91,10 @@ chmod +x tfswitch
 mv tfswitch $HOME/bin/tfswitch
 rm tfswitch.tar.gz
 
-#Kubeclt
-sudo packman -U https://archive.archlinux.org/packages/k/kubectl/kubectl-1.14.3-1-x86_64.pkg.tar.xz
+#Kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
 
 #Intellij
 sudo snap install intellij-idea-community --classic --edge
