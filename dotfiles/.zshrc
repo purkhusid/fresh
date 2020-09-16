@@ -97,6 +97,6 @@ vfg() {
 
 # Aliases
 alias tfswitch='tfswitch -b $HOME/bin/terraform'
-alias code='code-insiders'
+#alias code='code-insiders'
 alias k='kubectl'
 alias v='nvim'
