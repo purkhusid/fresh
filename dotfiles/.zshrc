@@ -1,5 +1,4 @@
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # Oh My Zsh plugins
@@ -10,6 +9,7 @@ plugins=(git kubectl aws kube-ps1 zsh-autosuggestions fzf)
 ZSH_CUSTOM="$HOME/.zsh_custom"
 
 # History settings
+setopt share_history
 HISTSIZE="200000"
 SAVEHIST="200000"
 HISTFILE="$HOME/.zsh_history"
@@ -24,9 +24,9 @@ mkdir -p "$(dirname "$HISTFILE")"
 export PATH="$HOME/bin:$PATH"
 
 #Go tooling
-export GOBIN="$HOME/go/gobin"
+export GOBIN="$HOME/go/bin"
 export GOPATH="$HOME/go"
-export PATH="$GOBIN:$GOPATH:$PATH"
+export PATH="/usr/local/go/bin:$GOBIN:$GOPATH:$PATH"
 
 #Rust tooling
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -40,6 +40,9 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 # webOS CLI
 export PATH="/usr/local/share/webOS_TV_SDK/CLI/bin:$PATH"
 
+# krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # Opam
 eval $(opam env)
 
@@ -49,6 +52,7 @@ export LC_COLLATE="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export GITHUB_TOKEN="$(cat $HOME/.config/hub)"
 
 # Theme settings
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -94,6 +98,48 @@ vfg() {
   IFS=$'\n' files=($(git ls-files | fzf --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
+
+function k8() {
+	local k8_config
+	if [[ $1 == "none" ]]; then
+		unset KUBECONFIG
+		return
+	fi
+
+	if [[ $# -eq 0 ]]; then
+		if [[ -z "${KUBECONFIG}" ]]; then
+			echo "No kubernetes config active" 1>&2
+		else
+			basename "${KUBECONFIG}"
+		fi
+		return
+	fi
+	if [[ $# -ne  1 ]]; then
+		echo "Usage k8 <cluster>" 1>&2
+		return
+	fi
+	k8_config="$HOME/.kube/$1"
+	if [[ ! -e $k8_config ]]; then
+		echo "KUBECONFIG \"$k8_config\" does not exist" 1>&2
+		return
+	fi
+	export KUBECONFIG="$k8_config"
+}
+
+function _k8() {
+	local cur=${COMP_WORDS[COMP_CWORD]}
+	local configs
+	configs=""
+	for file in "$HOME/.kube"/*
+	do
+		if [[ -d "$file" ]]; then
+			continue
+		fi
+		configs="$configs $(basename "$file")"
+	done
+	COMPREPLY=( $(compgen -W "$configs" -- "$cur" ) )
+}
+complete -o nospace -F _k8 k8
 
 # Aliases
 alias tfswitch='tfswitch -b $HOME/bin/terraform'

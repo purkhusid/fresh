@@ -23,6 +23,9 @@ sudo dnf install -y \
   golang \
   nodejs \
   opam \
+  python3-devel \
+  python-devel \
+  libffi-devel \
   dotnet-sdk-3.1 \
   gcc-c++.x86_64 \
   dotnet-runtime-3.1
